@@ -1,0 +1,27 @@
+From fdbecc2442b60545e02845a2c4643a23bf70f6a0 Mon Sep 17 00:00:00 2001
+From: cjybyjk <cjybyjk@zjnu.edu.cn>
+Date: Fri, 25 Dec 2020 10:03:05 +0800
+Subject: [PATCH] add face unlock feature
+
+Signed-off-by: cjybyjk <cjybyjk@zjnu.edu.cn>
+---
+ device.mk | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/device.mk b/device.mk
+index 9aea637..bff4a4e 100644
+--- a/device.mk
++++ b/device.mk
+@@ -71,6 +71,9 @@ PRODUCT_COPY_FILES += \
+ PRODUCT_PACKAGES += \
+     lineage.biometrics.fingerprint.inscreen@1.0-service.raphael
+ 
++# Face
++TARGET_FACE_UNLOCK := true
++
+ # FM
+ PRODUCT_PACKAGES += \
+     FM2 \
+-- 
+2.29.2
+
