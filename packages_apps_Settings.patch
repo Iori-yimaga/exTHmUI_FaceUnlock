@@ -1,4 +1,4 @@
-From 650d092f5b3deb4c3602e55c2874d9cd4a9f5a67 Mon Sep 17 00:00:00 2001
+From e6baa9994ab7f977aba9c0abca1cd252459aee17 Mon Sep 17 00:00:00 2001
 From: jhenrique09 <jhenrique09.mcz@hotmail.com>
 Date: Thu, 26 Mar 2020 04:56:47 -0300
 Subject: [PATCH] Port face unlock feature
@@ -75,8 +75,8 @@ Change-Id: I90aa1002f4fe46a1c8e167d5c8dc2c9dfa7dbdc7
  ...tingsRemoveButtonPreferenceController.java |  9 ++-
  .../face/FaceStatusPreferenceController.java  | 65 +++++++++++++++++--
  .../settings/password/ChooseLockGeneric.java  | 18 +++--
- .../settings/security/SecuritySettings.java   |  1 +
- 69 files changed, 482 insertions(+), 13 deletions(-)
+ .../settings/security/SecuritySettings.java   |  2 +-
+ 69 files changed, 482 insertions(+), 14 deletions(-)
  create mode 100644 res/values-ar-rSA/moto_strings.xml
  create mode 100644 res/values-az-rAZ/moto_strings.xml
  create mode 100644 res/values-be-rBY/moto_strings.xml
@@ -1197,12 +1197,14 @@ index 2a7de05719..6d4ed15991 100644
                      // No faces in this user, we may also want to delete managed profile faces
                      removeManagedProfileFacesAndFinishIfNecessary(userId, tracker);
 diff --git a/src/com/android/settings/security/SecuritySettings.java b/src/com/android/settings/security/SecuritySettings.java
-index 6c300d6e9d..f7258633c0 100644
+index 6c300d6e9d..fa6bb59e7c 100644
 --- a/src/com/android/settings/security/SecuritySettings.java
 +++ b/src/com/android/settings/security/SecuritySettings.java
-@@ -116,6 +116,7 @@ public class SecuritySettings extends DashboardFragment {
+@@ -114,8 +114,8 @@ public class SecuritySettings extends DashboardFragment {
+         controllers.add(new TrustAgentListPreferenceController(context, host, lifecycle));
+ 
          final List<AbstractPreferenceController> securityPreferenceControllers = new ArrayList<>();
-         securityPreferenceControllers.add(new FaceStatusPreferenceController(context));
+-        securityPreferenceControllers.add(new FaceStatusPreferenceController(context));
          securityPreferenceControllers.add(new FingerprintStatusPreferenceController(context));
 +        securityPreferenceControllers.add(new FaceStatusPreferenceController(context, lifecycle));
          securityPreferenceControllers.add(new ChangeScreenLockPreferenceController(context, host));
